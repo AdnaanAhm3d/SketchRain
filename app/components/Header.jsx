@@ -106,7 +106,7 @@ function HeaderMenuMobileToggle() {
 }
 
 function SearchToggle() {
-  return <a href="#search-aside">Search</a>;
+  return <a href="#search-aside">SKrr</a>;
 }
 
 /**
