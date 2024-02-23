@@ -2,13 +2,25 @@ import {defer} from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link} from '@remix-run/react';
 import {Suspense} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
+import BgIMG from 'public/images/BG-DESKTOP2.png';
+import example from '../assets/font finder.png';
+import {Header} from '~/components/Header';
+import DefaultContextProvider from '../Contexts/DefaultContext';
 
 /**
  * @type {MetaFunction}
  */
 export const meta = () => {
-  return [{title: 'Hydrogen | Home'}];
+  return [{title: 'Hydrogsen | Home'}];
 };
+
+// MY WORK -----------------
+// export const loader = async ({context}) => {
+//   const publicStoreDomain = context.env.PUBLIC_STORE_DOMAIN;
+//   console.log(publicStoreDomain);
+// };
+
+// loader();
 
 /**
  * @param {LoaderFunctionArgs}
@@ -26,11 +38,19 @@ export default function Homepage() {
   /** @type {LoaderReturnData} */
   const data = useLoaderData();
   return (
-    <div className="home">
-      <h3>HELLLOOOOO</h3>
-      <FeaturedCollection collection={data.featuredCollection} />
-      <RecommendedProducts products={data.recommendedProducts} />
-    </div>
+    <>
+      <div className="home">
+        <div class="circle"></div>
+        <div className="background">
+          <div className="img-div">
+            <img src={BgIMG} alt="abc" />
+          </div>
+        </div>
+
+        {/* <FeaturedCollection collection={data.featuredCollection} /> */}
+        {/* <RecommendedProducts products={data.recommendedProducts} /> */}
+      </div>
+    </>
   );
 }
 
@@ -40,7 +60,12 @@ export default function Homepage() {
  * }}
  */
 function FeaturedCollection({collection}) {
-  if (!collection) return null;
+  if (!collection)
+    return (
+      <>
+        <h1>no collection</h1>
+      </>
+    );
   const image = collection?.image;
   return (
     <Link

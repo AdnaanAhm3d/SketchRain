@@ -1,5 +1,6 @@
 import {json, redirect} from '@shopify/remix-oxygen';
 import {useLoaderData, Link} from '@remix-run/react';
+import {Header} from '~/components/Header';
 import {
   Pagination,
   getPaginationVariables,
@@ -48,6 +49,7 @@ export default function Collection() {
   return (
     <div className="collection">
       <h1>{collection.title}</h1>
+
       <p className="collection-description">{collection.description}</p>
       <Pagination connection={collection.products}>
         {({nodes, isLoading, PreviousLink, NextLink}) => (

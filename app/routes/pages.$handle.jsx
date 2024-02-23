@@ -1,5 +1,6 @@
 import {json} from '@shopify/remix-oxygen';
-import {useLoaderData} from '@remix-run/react';
+import {useFetcher, useLoaderData} from '@remix-run/react';
+import {useEffect} from 'react';
 
 /**
  * @type {MetaFunction<typeof loader>}
@@ -33,11 +34,29 @@ export default function Page() {
   /** @type {LoaderReturnData} */
   const {page} = useLoaderData();
 
+  const fetcher = useFetcher();
+
+  useEffect(() => {
+    if ((fetcher.state === 'idle') & (fetcher.data == null)) {
+      fetcher.load('/pages/cancellation-and-refund');
+    }
+  }, [fetcher]);
+
+  useEffect(() => {
+    let dataExtractor = new DOMParser().parseFromString(
+      fetcher?.data?.page.body,
+      'text/html',
+    );
+    // console.log(dataExtractor.querySelector('p')?.innerHTML);
+    console.log(fetcher?.data?.page.body);
+  }, []);
+
   return (
     <div className="page">
       <header>
         <h1>{page.title}</h1>
       </header>
+
       <main dangerouslySetInnerHTML={{__html: page.body}} />
     </div>
   );

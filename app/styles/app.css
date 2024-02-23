@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+
 :root {
   --aside-width: 400px;
   --cart-aside-summary-height-with-discount: 300px;
@@ -6,11 +8,54 @@
   --header-height: 64px;
   --color-dark: #000;
   --color-light: #fff;
+  overflow-x: hidden;
+  text-decoration: none;
+  font-family: 'Roboto Mono', monospace;
+  /* background: red; */
+  /* background-image: url('public/images/BG-DESKTOP2.png'); */
+}
+
+body {
+  text-decoration: none;
+  padding: none;
+  margin: none;
+  box-sizing: border-box;
+  font-family: 'Roboto Mono', monospace;
+  letter-spacing: -1px;
+}
+
+a {
+  text-decoration: none;
+}
+.background {
+  background: darkgrey;
+  padding: none;
+  margin: none;
+  /* width: 100vw; */
+  /* height: 100vh; */
+}
+
+.background .img-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* object-fit: cover; */
+}
+
+.img-div img {
+  transform: translateX(-80px);
+  width: 120%;
+  height: 100%;
+  object-fit: cover;
 }
 
 img {
   border-radius: 4px;
 }
+
+/* LOGO */
 
 /*
 * --------------------------------------------------
@@ -127,15 +172,54 @@ aside li {
 * components/Header
 * --------------------------------------------------
 */
+
 .header {
   align-items: center;
-  background: #fff;
+
+  /* background: #fff; */
   display: flex;
+  justify-content: space-between;
+  width: 95vw;
+  padding-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
   height: var(--header-height);
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
   position: sticky;
   top: 0;
+  /* background: gray; */
   z-index: 1;
+  font-size: 1.1rem;
+}
+
+.nav-links {
+  /* background: rebeccapurple; */
+  display: grid;
+  color: white;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr;
+  gap: 50px;
+  /* padding-left: 10px; */
+  /* grid-template-rows: 1fr; */
+}
+
+.logo-text {
+  color: var(--color-light);
+  text-decoration: none;
+  width: 200px;
+  filter: invert(100%);
+  /* background: green; */
+  transform: translateX(-65px);
+  /* height: 30px; */
+}
+
+.logo-text-black {
+  color: var(--color-light);
+  text-decoration: none;
+  width: 200px;
+  filter: invert(100%);
+  /* background: green; */
+  transform: translateX(-65px);
+  /* height: 30px; */
 }
 
 .header-menu-mobile-toggle {
@@ -162,13 +246,47 @@ aside li {
 
 .header-menu-item {
   cursor: pointer;
+  color: var(--color-light);
+  /* color: red; */
+  text-decoration: none;
+  font-family: 'Roboto Mono', monospace;
+  padding: none;
+  margin: none;
+}
+
+/* header-menu-item, logo-text, header-ctas a */
+
+.switcher,
+.switcher a {
+  color: black;
+  filter: invert(0);
+}
+
+.header-menu-item:hover {
+  /* background: red; */
+  text-decoration: none;
+}
+
+.header-ctas a {
+  /* background: goldenrod; */
+  /* display: none; */
+  text-decoration: none;
+  /* color: var(--color-light); */
+
+  /* display: grid; */
+  /* grid-row: 1fr 1fr 1fr; */
+  /* grid-template-columns: 0.5fr 1fr 1fr; */
+  /* gap: 100px; */
+}
+
+.ctas-link {
+  color: var(--color-light);
 }
 
 .header-ctas {
-  align-items: center;
-  display: flex;
-  grid-gap: 1rem;
-  margin-left: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
 }
 
 /*
@@ -177,8 +295,10 @@ aside li {
 * --------------------------------------------------
 */
 .footer {
-  background: var(--color-dark);
+  /* background: var(--color-dark); */
   margin-top: auto;
+  position: absolute;
+  bottom: 0;
 }
 
 .footer-menu-missing {
@@ -189,12 +309,15 @@ aside li {
 .footer-menu {
   align-items: center;
   display: flex;
-  grid-gap: 1rem;
+  grid-gap: 3rem;
   padding: 1rem;
+  padding-bottom: 1.5rem;
 }
 
 .footer-menu a {
+  /* background: red; */
   color: var(--color-light);
+  /* color: #000; */
 }
 
 /*
@@ -470,4 +593,34 @@ aside li {
 
 .account-logout {
   display: inline-block;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  /* background-color: transparent; */
+  background-color: white;
+  /* border: 2px solid #3498db; */
+  border-radius: 50%;
+  position: absolute;
+  z-index: 10;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.black {
+  filter: invert(0);
+  background: red;
 }
